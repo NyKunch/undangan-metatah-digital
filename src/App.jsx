@@ -1,8 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MapPin, Calendar, Clock, Gift, Heart, Menu, X, CalendarClock } from 'lucide-react';
+import { MapPin, Calendar, Clock, Gift, Heart, Menu, X, CalendarClock, MessageSquare, Send } from 'lucide-react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectFade, Autoplay, Pagination, FreeMode, Navigation, Thumbs } from 'swiper/modules';
+
 import HeroImage from './assets/hero.jpg';
 import lalaImage from './assets/lala.jpg';
 import boaImage from './assets/boa.jpg';
@@ -45,6 +46,55 @@ const App = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef(null);
   const [copied, setCopied] = useState(false);
+  const [name, setName] = useState('');
+  const [message, setMessage] = useState('');
+  const [wishes, setWishes] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  const fetchWishes = async () => {
+    try {
+      const res = await fetch('/api/messages');
+      if (res.ok) {
+        const data = await res.json();
+        setWishes(data);
+      }
+    } catch (err) {
+      console.error("Gagal mengambil ucapan:", err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!name || !message) return;
+
+    const payload = { name, text: message };
+
+    // Optimistic Update (Tampilkan di UI terlebih dahulu agar terasa instan)
+    const temporaryWish = { ...payload, createdAt: new Date(), _id: Date.now().toString() };
+    setWishes((prev) => [temporaryWish, ...prev]);
+
+    // Reset Form
+    setName('');
+    setMessage('');
+
+    try {
+      const res = await fetch('/api/messages', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+
+      if (!res.ok) {
+        // Jika gagal di server, ambil ulang data asli untuk sinkronisasi kembali
+        fetchWishes();
+      }
+    } catch (err) {
+      console.error("Gagal mengirim ucapan:", err);
+      fetchWishes();
+    }
+  };
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -55,6 +105,7 @@ const App = () => {
     const timer = setInterval(() => {
       const now = new Date();
       const diff = target - now;
+      fetchWishes();
       setTimeLeft({
         hari: Math.floor(diff / (1000 * 60 * 60 * 24)),
         jam: Math.floor((diff / (1000 * 60 * 60)) % 24),
@@ -64,6 +115,17 @@ const App = () => {
     }, 1000);
     return () => clearInterval(timer);
   }, []);
+
+  // Helper untuk memformat waktu agar lebih rapi di HP
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('id-ID', { 
+      day: 'numeric', 
+      month: 'short', 
+      hour: '2-digit', 
+      minute: '2-digit' 
+    });
+  };
 
   const handleOpenInvitation = () => {
     setIsOpened(true); // Membuka status undangan
@@ -354,7 +416,7 @@ const App = () => {
       </section>
 
       {/* SECTION KADO DIGITAL */}
-      <section className="py-20 px-6 bg-stone-50">
+      {/* <section className="py-20 px-6 bg-stone-50">
         <div className="max-w-md mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -365,12 +427,12 @@ const App = () => {
             <h3 className="font-cursive text-5xl text-stone-800 mb-6">Kado Digital</h3>
             <p className="text-sm text-stone-600 mb-10 leading-relaxed">
               Doa restu Anda merupakan karunia yang sangat berarti bagi kami. Namun jika Anda ingin memberikan tanda kasih, dapat melalui transfer bank di bawah ini:
-            </p>
+            </p> */}
 
             {/* Card Rekening BNI */}
-            <div className="bg-white p-8 rounded-[2rem] shadow-xl border border-amber-100 relative overflow-hidden group">
+            {/* <div className="bg-white p-8 rounded-[2rem] shadow-xl border border-amber-100 relative overflow-hidden group"> */}
               {/* Background Logo BNI Transparan */}
-              <div className="absolute -right-4 -bottom-4 opacity-5 group-hover:scale-110 transition-transform duration-700">
+              {/* <div className="absolute -right-4 -bottom-4 opacity-5 group-hover:scale-110 transition-transform duration-700">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Bank_Negara_Indonesia_logo_%282004%29.svg/1920px-Bank_Negara_Indonesia_logo_%282004%29.svg.png" alt="BNI" className="w-40" />
               </div>
 
@@ -385,10 +447,10 @@ const App = () => {
                 <h4 className="text-2xl font-bold text-stone-800 tracking-wider mb-2">
                   2032371452
                 </h4>
-                <p className="text-stone-600 font-medium mb-6 uppercase">Ni Putu Laksmi Nirmala Dewi</p>
+                <p className="text-stone-600 font-medium mb-6 uppercase">Ni Putu Laksmi Nirmala Dewi</p> */}
 
                 {/* Tombol Copy */}
-                <button
+                {/* <button
                   onClick={() => copyToClipboard("2032371452")}
                   className={`
                     w-full py-3 rounded-xl font-bold transition-all duration-300 flex items-center justify-center gap-2
@@ -405,6 +467,81 @@ const App = () => {
             </div>
           </motion.div>
         </div>
+      </section> */}
+
+      {/* Section ucapan dan buku tamu */}
+      <section className="py-20 px-6 bg-white">
+        <div className="max-w-md mx-auto">
+          <div className="text-center mb-10">
+            <MessageSquare className="mx-auto text-amber-600 mb-4" size={32} />
+            <h3 className="font-cursive text-5xl text-stone-800 mb-4">Buku Tamu</h3>
+            <p className="text-xs text-stone-500 uppercase tracking-widest">Berikan Doa Restu Anda</p>
+          </div>
+
+          {/* Form Input */}
+          <form onSubmit={handleSubmit} className="bg-stone-50 p-6 rounded-3xl border border-stone-200 mb-8 shadow-sm">
+            <div className="mb-4">
+              <input
+                type="text"
+                placeholder="Nama Anda"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                className="w-full px-4 py-3 bg-white border border-stone-200 rounded-xl text-sm focus:outline-none focus:border-amber-500 transition-colors"
+                required
+              />
+            </div>
+            <div className="mb-4">
+              <textarea
+                placeholder="Tulis ucapan & doa restu..."
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                rows="4"
+                className="w-full px-4 py-3 bg-white border border-stone-200 rounded-xl text-sm focus:outline-none focus:border-amber-500 transition-colors resize-none"
+                required
+              ></textarea>
+            </div>
+            <button
+              type="submit"
+              className="w-full py-3 bg-amber-600 text-white font-bold rounded-xl text-sm flex items-center justify-center gap-2 hover:bg-amber-700 active:scale-95 transition-all"
+            >
+              <Send size={16} />
+              Kirim Ucapan
+            </button>
+          </form>
+
+          {/* List Ucapan */}
+          <div className="space-y-4 max-h-[400px] overflow-y-auto pr-2 custom-scrollbar">
+            {loading ? (
+              <p className="text-center text-xs text-stone-400 py-4">Memuat doa restu...</p>
+            ) : wishes.length === 0 ? (
+              <p className="text-center text-xs text-stone-400 py-4">Belum ada ucapan. Jadilah yang pertama!</p>
+            ) : (
+              wishes.map((wish) => (
+                <motion.div 
+                  key={wish._id}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="bg-stone-50 p-4 rounded-2xl border border-stone-100 shadow-sm text-left"
+                >
+                  <div className="flex justify-between items-center mb-1">
+                    <h4 className="font-bold text-stone-800 text-sm uppercase tracking-wide">{wish.name}</h4>
+                    <span className="text-[10px] text-stone-400">{formatDate(wish.createdAt)}</span>
+                  </div>
+                  <p className="text-xs text-stone-600 leading-relaxed font-serif italic">
+                    "{wish.text}"
+                  </p>
+                </motion.div>
+              ))
+            )}
+          </div>
+        </div>
+
+        {/* Styling Scrollbar Kecil untuk Mobile */}
+        <style dangerouslySetInnerHTML={{ __html: `
+          .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+          .custom-scrollbar::-webkit-scrollbar-track { background: #f5f5f4; }
+          .custom-scrollbar::-webkit-scrollbar-thumb { background: #d6d3d1; border-radius: 10px; }
+        `}} />
       </section>
 
       {/* SECTION PENUTUP */}
