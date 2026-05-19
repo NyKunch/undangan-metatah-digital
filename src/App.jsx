@@ -4,10 +4,10 @@ import { MapPin, Calendar, Clock, Gift, Heart, Menu, X, CalendarClock, MessageSq
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectFade, Autoplay, Pagination, FreeMode, Navigation, Thumbs } from 'swiper/modules';
 
-import HeroImage from './assets/hero.jpg';
-import lalaImage from './assets/lala.jpg';
-import boaImage from './assets/boa.jpg';
-import mangImage from './assets/mang.jpg';
+import HeroImage from './assets/hero.JPG';
+import lalaImage from './assets/lala.JPG';
+import boaImage from './assets/boa.JPG';
+import mangImage from './assets/mang.JPG';
 
 // Import Swiper styles
 import 'swiper/css';
