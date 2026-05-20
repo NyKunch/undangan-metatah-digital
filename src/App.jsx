@@ -4,10 +4,20 @@ import { MapPin, Calendar, Clock, Gift, Heart, Menu, X, CalendarClock, MessageSq
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectFade, Autoplay, Pagination, FreeMode, Navigation, Thumbs } from 'swiper/modules';
 
-import HeroImage from './assets/hero.JPG';
-import lalaImage from './assets/lala.JPG';
-import boaImage from './assets/boa.JPG';
-import mangImage from './assets/mang.JPG';
+import HeroImage from './assets/hero.webp';
+import lalaImage from './assets/lala.webp';
+import boaImage from './assets/boa.webp';
+import mangImage from './assets/mang.webp';
+import albumImage1 from './assets/album1.webp';
+import albumImage2 from './assets/album2.webp';
+import albumImage3 from './assets/album3.webp';
+import albumImage4 from './assets/album4.webp';
+import albumImage5 from './assets/album5.webp';
+import albumImage6 from './assets/album6.webp';
+import albumImage7 from './assets/album7.webp';
+import albumImage8 from './assets/album8.webp';
+import albumImage9 from './assets/album9.webp';
+import albumImage10 from './assets/album10.webp';
 
 // Import Swiper styles
 import 'swiper/css';
@@ -18,7 +28,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/thumbs';
 import MusicPlayer from './components/MusicPlayer';
 
-const myPhotos = [lalaImage, boaImage, mangImage];
+const myAlbum = [albumImage1, albumImage2, albumImage3, albumImage4, albumImage5, albumImage6, albumImage7, albumImage8, albumImage9, albumImage10];
 
 const participants = [
   {
@@ -32,7 +42,7 @@ const participants = [
     image: boaImage, 
   },
   {
-    name: "Mang Nata Aselole",
+    name: "I Gd Nyoman Bagus Pranata Kusuma",
     relation: "Putra Ketiga",
     image: mangImage, 
   }
@@ -144,12 +154,6 @@ const App = () => {
       }, 300);
       ;
     }
-  };
-
-  const copyToClipboard = (text) => {
-    navigator.clipboard.writeText(text);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000); // Reset status setelah 2 detik
   };
 
   return (
@@ -343,7 +347,7 @@ const App = () => {
             modules={[FreeMode, Navigation, Thumbs, Autoplay]}
             className="rounded-3xl shadow-2xl mb-4 h-[450px]"
           >
-            {myPhotos.map((img, index) => (
+            {myAlbum.map((img, index) => (
               <SwiperSlide key={index}>
                 <img src={img} className="w-full h-full object-cover" alt={`Gallery ${index}`} />
               </SwiperSlide>
@@ -361,7 +365,7 @@ const App = () => {
             modules={[FreeMode, Navigation, Thumbs]}
             className="thumbs-slider"
           >
-            {myPhotos.map((img, index) => (
+            {myAlbum.map((img, index) => (
               <SwiperSlide key={index} className="cursor-pointer">
                 <div className="opacity-40 [.swiper-slide-thumb-active_&]:opacity-100 transition-opacity">
                   <img 
@@ -414,60 +418,6 @@ const App = () => {
           Buka Petunjuk Jalan
         </motion.a>
       </section>
-
-      {/* SECTION KADO DIGITAL */}
-      {/* <section className="py-20 px-6 bg-stone-50">
-        <div className="max-w-md mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <Gift className="mx-auto text-amber-600 mb-4" size={32} />
-            <h3 className="font-cursive text-5xl text-stone-800 mb-6">Kado Digital</h3>
-            <p className="text-sm text-stone-600 mb-10 leading-relaxed">
-              Doa restu Anda merupakan karunia yang sangat berarti bagi kami. Namun jika Anda ingin memberikan tanda kasih, dapat melalui transfer bank di bawah ini:
-            </p> */}
-
-            {/* Card Rekening BNI */}
-            {/* <div className="bg-white p-8 rounded-[2rem] shadow-xl border border-amber-100 relative overflow-hidden group"> */}
-              {/* Background Logo BNI Transparan */}
-              {/* <div className="absolute -right-4 -bottom-4 opacity-5 group-hover:scale-110 transition-transform duration-700">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Bank_Negara_Indonesia_logo_%282004%29.svg/1920px-Bank_Negara_Indonesia_logo_%282004%29.svg.png" alt="BNI" className="w-40" />
-              </div>
-
-              <div className="relative z-10">
-                <img 
-                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Bank_Negara_Indonesia_logo_%282004%29.svg/1920px-Bank_Negara_Indonesia_logo_%282004%29.svg.png" 
-                  alt="Logo BNI" 
-                  className="h-8 mx-auto mb-6"
-                />
-                
-                <p className="text-xs uppercase tracking-widest text-stone-400 mb-1">Nomor Rekening</p>
-                <h4 className="text-2xl font-bold text-stone-800 tracking-wider mb-2">
-                  2032371452
-                </h4>
-                <p className="text-stone-600 font-medium mb-6 uppercase">Ni Putu Laksmi Nirmala Dewi</p> */}
-
-                {/* Tombol Copy */}
-                {/* <button
-                  onClick={() => copyToClipboard("2032371452")}
-                  className={`
-                    w-full py-3 rounded-xl font-bold transition-all duration-300 flex items-center justify-center gap-2
-                    ${copied ? 'bg-green-500 text-white' : 'bg-stone-800 text-white hover:bg-stone-700'}
-                  `}
-                >
-                  {copied ? (
-                    <>Tersalin!</>
-                  ) : (
-                    <>Salin No. Rekening</>
-                  )}
-                </button>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section> */}
 
       {/* Section ucapan dan buku tamu */}
       <section className="py-20 px-6 bg-white">
