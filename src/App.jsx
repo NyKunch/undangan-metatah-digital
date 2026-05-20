@@ -11,13 +11,13 @@ import mangImage from './assets/mang.webp';
 import albumImage1 from './assets/album1.webp';
 import albumImage2 from './assets/album2.webp';
 import albumImage3 from './assets/album3.webp';
-import albumImage4 from './assets/album4.webp';
-import albumImage5 from './assets/album5.webp';
-import albumImage6 from './assets/album6.webp';
-import albumImage7 from './assets/album7.webp';
+import albumImage4 from './assets/album4.JPG';
+import albumImage5 from './assets/album5.JPG';
+import albumImage6 from './assets/album6.JPG';
+import albumImage7 from './assets/album7.JPG';
 import albumImage8 from './assets/album8.webp';
 import albumImage9 from './assets/album9.webp';
-import albumImage10 from './assets/album10.webp';
+import albumImage10 from './assets/album10.JPG';
 
 // Import Swiper styles
 import 'swiper/css';
@@ -33,17 +33,17 @@ const myAlbum = [albumImage1, albumImage2, albumImage3, albumImage4, albumImage5
 const participants = [
   {
     name: "Ni Putu Laksmi Nirmala Dewi, S.Kom",
-    relation: "Putri Pertama",
+    relation: "Putri Pertama dari pasangan I Nyoman Sunartika Umardana, SH. dan Ni Wayan Suryani, SE.",
     image: lalaImage, 
   },
   {
     name: "I GD. Made Bagus Pradnyana Wibawa",
-    relation: "Putra Kedua",
+    relation: "Putra Kedua dari pasangan I Nyoman Sunartika Umardana, SH. dan Ni Wayan Suryani, SE.",
     image: boaImage, 
   },
   {
     name: "I Gd Nyoman Bagus Pranata Kusuma",
-    relation: "Putra Ketiga",
+    relation: "Putra Ketiga dari pasangan I Nyoman Sunartika Umardana, SH. dan Ni Wayan Suryani, SE.",
     image: mangImage, 
   }
 ];
