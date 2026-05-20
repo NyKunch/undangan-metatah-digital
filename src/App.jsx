@@ -11,13 +11,8 @@ import mangImage from './assets/mang.webp';
 import albumImage1 from './assets/album1.webp';
 import albumImage2 from './assets/album2.webp';
 import albumImage3 from './assets/album3.webp';
-import albumImage4 from './assets/album4.JPG';
-import albumImage5 from './assets/album5.JPG';
-import albumImage6 from './assets/album6.JPG';
-import albumImage7 from './assets/album7.JPG';
 import albumImage8 from './assets/album8.webp';
 import albumImage9 from './assets/album9.webp';
-import albumImage10 from './assets/album10.JPG';
 
 // Import Swiper styles
 import 'swiper/css';
@@ -28,22 +23,22 @@ import 'swiper/css/navigation';
 import 'swiper/css/thumbs';
 import MusicPlayer from './components/MusicPlayer';
 
-const myAlbum = [albumImage1, albumImage2, albumImage3, albumImage4, albumImage5, albumImage6, albumImage7, albumImage8, albumImage9, albumImage10];
+const myAlbum = [albumImage1, albumImage2, albumImage3, albumImage8, albumImage9, HeroImage, lalaImage, boaImage, mangImage];
 
 const participants = [
   {
     name: "Ni Putu Laksmi Nirmala Dewi, S.Kom",
-    relation: "Putri Pertama dari pasangan I Nyoman Sunartika Umardana, SH. dan Ni Wayan Suryani, SE.",
+    relation: "Putri Pertama dari pasangan I Nyoman Sunartika Umardana, S.H. dan Ni Wayan Suryani, S.E.",
     image: lalaImage, 
   },
   {
     name: "I GD. Made Bagus Pradnyana Wibawa",
-    relation: "Putra Kedua dari pasangan I Nyoman Sunartika Umardana, SH. dan Ni Wayan Suryani, SE.",
+    relation: "Putra Kedua dari pasangan I Nyoman Sunartika Umardana, S.H. dan Ni Wayan Suryani, S.E.",
     image: boaImage, 
   },
   {
     name: "I Gd Nyoman Bagus Pranata Kusuma",
-    relation: "Putra Ketiga dari pasangan I Nyoman Sunartika Umardana, SH. dan Ni Wayan Suryani, SE.",
+    relation: "Putra Ketiga dari pasangan I Nyoman Sunartika Umardana, S.H. dan Ni Wayan Suryani, S.E.",
     image: mangImage, 
   }
 ];
@@ -55,7 +50,6 @@ const App = () => {
   const [isOpened, setIsOpened] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef(null);
-  const [copied, setCopied] = useState(false);
   const [name, setName] = useState('');
   const [message, setMessage] = useState('');
   const [wishes, setWishes] = useState([]);
@@ -231,9 +225,9 @@ const App = () => {
             "Atas Asung Kertha Wara Nugraha Ida Sang Hyang Widhi Wasa, kami bermaksud mengundang Bapak/Ibu/Saudara/i pada upacara potong gigi (Mepandes) putra-putri kami."
           </p> <br /> <br />
           <p className="text-sm leading-relaxed italic text-stone-600">
-            "Dengan ini (Yadnya), kami berbakti kepada Hyang Widhi dan dengan ini pula Hyang Widhi memelihara dan mengasihi kamu. Dengan saling memelihara satu sama lain, kamu akan mencapai kebaikan yang maha tinggi."
+            Seseorang yang mampu mengendalikan indranya dan melaksanakan kewajiban dengan tulus adalah pribadi yang utama.
           </p>
-          <h3 className="text-center font-cursive ml-[-10px] text-xl text-stone-800 mb-10 italic">Bhagavad Gita 3.11</h3>
+          <h3 className="text-center font-cursive ml-[-10px] text-xl text-stone-800 mb-10 italic">Bhagavad Gita 3.7</h3>
         </motion.div>
         {/* GRADASI DI AKHIR SECTION */}
         <div className="absolute bottom-0 left-0 w-full h-8 bg-gradient-to-b from-transparent to-amber-50 pointer-events-none" />
