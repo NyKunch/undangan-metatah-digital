@@ -11,6 +11,8 @@ import mangImage from './assets/mang.webp';
 import albumImage1 from './assets/album1.webp';
 import albumImage2 from './assets/album2.webp';
 import albumImage3 from './assets/album3.webp';
+import albumImage4 from './assets/album4.webp';
+import albumImage5 from './assets/album5.webp';
 import albumImage8 from './assets/album8.webp';
 import albumImage9 from './assets/album9.webp';
 
@@ -23,7 +25,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/thumbs';
 import MusicPlayer from './components/MusicPlayer';
 
-const myAlbum = [albumImage1, albumImage2, albumImage3, albumImage8, albumImage9, HeroImage, lalaImage, boaImage, mangImage];
+const myAlbum = [albumImage1, albumImage2, albumImage3, albumImage4, albumImage5, albumImage8, albumImage9, HeroImage, boaImage, mangImage];
 
 const participants = [
   {
