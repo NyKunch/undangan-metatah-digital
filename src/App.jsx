@@ -235,54 +235,6 @@ const App = () => {
         <div className="absolute bottom-0 left-0 w-full h-8 bg-gradient-to-b from-transparent to-amber-50 pointer-events-none" />
       </section>
 
-      {/* WAKTU & COUNTDOWN - Single Row Layout */}
-      <section className="px-4 py-20 bg-amber-50">
-        <div className="max-w-md mx-auto">
-        <CalendarClock size={36} className="mx-auto text-amber-400 mb-2" />
-        <h3 className="text-center font-cursive ml-[-10px] text-5xl text-stone-800 mb-10 italic">Tanggal Acara</h3>
-          {/* Countdown Row */}
-          <div className="flex justify-between gap-2 mb-12">
-            {Object.entries(timeLeft).map(([label, value]) => (
-              <div 
-                key={label} 
-                className="flex-1 bg-white py-3 px-1 rounded-xl shadow-sm border border-amber-100 text-center min-w-[65px]"
-              >
-                <span className="text-2xl font-bold text-amber-800 block leading-none mb-1">
-                  {value}
-                </span>
-                <span className="text-[9px] uppercase tracking-tighter text-amber-600 font-bold">
-                  {label}
-                </span>
-              </div>
-            ))}
-          </div>
-
-          {/* Detail Acara Row */}
-          <div className="space-y-4">
-            <div className="flex items-center gap-4 bg-white p-4 rounded-2xl shadow-sm border border-stone-200">
-              <div className="bg-amber-100 p-2.5 rounded-full text-amber-700 shrink-0">
-                <Calendar size={18} />
-              </div>
-              <div className="text-left">
-                <p className="font-bold text-stone-800 text-sm md:text-base text-nowrap">Sabtu, 06 Juni 2026</p>
-                <p className="text-[11px] text-stone-500 uppercase tracking-wider">Tanggal Acara</p>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-4 bg-white p-4 rounded-2xl shadow-sm border border-stone-200">
-              <div className="bg-amber-100 p-2.5 rounded-full text-amber-700 shrink-0">
-                <Clock size={18} />
-              </div>
-              <div className="text-left">
-                <p className="font-bold text-stone-800 text-sm md:text-base text-nowrap">11:00 WITA - Selesai</p>
-                <p className="text-[11px] text-stone-500 uppercase tracking-wider">Waktu Pelaksanaan</p>
-              </div>
-            </div>
-          </div>
-          
-        </div>
-      </section>
-
       {/* SECTION PROFIL PESERTA */}
       <section className="py-20 px-6 bg-white">
         <div className="max-w-4xl mx-auto text-center">
@@ -415,6 +367,54 @@ const App = () => {
         </motion.a>
       </section>
 
+      {/* WAKTU & COUNTDOWN - Single Row Layout */}
+      <section className="px-4 py-20 bg-amber-50">
+        <div className="max-w-md mx-auto">
+        <CalendarClock size={36} className="mx-auto text-amber-400 mb-2" />
+        <h3 className="text-center font-cursive ml-[-10px] text-5xl text-stone-800 mb-10 italic">Tanggal Acara</h3>
+          {/* Countdown Row */}
+          <div className="flex justify-between gap-2 mb-12">
+            {Object.entries(timeLeft).map(([label, value]) => (
+              <div 
+                key={label} 
+                className="flex-1 bg-white py-3 px-1 rounded-xl shadow-sm border border-amber-100 text-center min-w-[65px]"
+              >
+                <span className="text-2xl font-bold text-amber-800 block leading-none mb-1">
+                  {value}
+                </span>
+                <span className="text-[9px] uppercase tracking-tighter text-amber-600 font-bold">
+                  {label}
+                </span>
+              </div>
+            ))}
+          </div>
+
+          {/* Detail Acara Row */}
+          <div className="space-y-4">
+            <div className="flex items-center gap-4 bg-white p-4 rounded-2xl shadow-sm border border-stone-200">
+              <div className="bg-amber-100 p-2.5 rounded-full text-amber-700 shrink-0">
+                <Calendar size={18} />
+              </div>
+              <div className="text-left">
+                <p className="font-bold text-stone-800 text-sm md:text-base text-nowrap">Sabtu, 06 Juni 2026</p>
+                <p className="text-[11px] text-stone-500 uppercase tracking-wider">Tanggal Acara</p>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-4 bg-white p-4 rounded-2xl shadow-sm border border-stone-200">
+              <div className="bg-amber-100 p-2.5 rounded-full text-amber-700 shrink-0">
+                <Clock size={18} />
+              </div>
+              <div className="text-left">
+                <p className="font-bold text-stone-800 text-sm md:text-base text-nowrap">11:00 WITA - Selesai</p>
+                <p className="text-[11px] text-stone-500 uppercase tracking-wider">Waktu Pelaksanaan</p>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </section>
+
       {/* Section ucapan dan buku tamu */}
       <section className="py-20 px-6 bg-white">
         <div className="max-w-md mx-auto">
@@ -532,12 +532,6 @@ const App = () => {
           </motion.p>
         </motion.div>
       </section>
-
-      {/* FOOTER */}
-      {/* <footer className="py-12 bg-stone-900 text-center border-t border-white/5">
-        <p className="text-[10px] uppercase tracking-widest text-white/40">Dibuat dengan Kasih & Doa</p>
-        <p className="text-[10px] text-white/20 mt-2 italic font-cursive text-lg">Dooney 2026</p>
-      </footer> */}
 
       <MusicPlayer 
         isPlaying={isPlaying} 
