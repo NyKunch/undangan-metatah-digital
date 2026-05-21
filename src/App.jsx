@@ -244,9 +244,8 @@ const App = () => {
             viewport={{ once: true }}
             className="font-cursive text-5xl text-stone-800 mb-4"
           >
-            Sang Sangaskara
+            Peserta Mepandes
           </motion.h3>
-          <p className="text-sm text-stone-500 mb-12 uppercase tracking-[0.2em]">Peserta Mepandes</p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {participants.map((person, index) => (
