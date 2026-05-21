@@ -227,12 +227,12 @@ const App = () => {
             "Atas Asung Kertha Wara Nugraha Ida Sang Hyang Widhi Wasa, kami bermaksud mengundang Bapak/Ibu/Saudara/i pada upacara potong gigi (Mepandes) putra-putri kami."
           </p> <br /> <br />
           <p className="text-sm leading-relaxed italic text-stone-600">
-            Seseorang yang mampu mengendalikan indranya dan melaksanakan kewajiban dengan tulus adalah pribadi yang utama.
+            "Seseorang yang mampu mengendalikan indranya dan melaksanakan kewajiban dengan tulus adalah pribadi yang utama."
           </p>
           <h3 className="text-center font-cursive ml-[-10px] text-xl text-stone-800 mb-10 italic">Bhagavad Gita 3.7</h3>
         </motion.div>
         {/* GRADASI DI AKHIR SECTION */}
-        <div className="absolute bottom-0 left-0 w-full h-8 bg-gradient-to-b from-transparent to-amber-50 pointer-events-none" />
+        {/* <div className="absolute bottom-0 left-0 w-full h-8 bg-gradient-to-b from-transparent to-amber-50 pointer-events-none" /> */}
       </section>
 
       {/* SECTION PROFIL PESERTA */}
